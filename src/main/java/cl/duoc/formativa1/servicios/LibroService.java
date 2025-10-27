@@ -1,12 +1,15 @@
 package cl.duoc.formativa1.servicios;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import cl.duoc.formativa1.entidades.Libro;
 import cl.duoc.formativa1.repositorio.LibroRepository;
 
+@Service
 public class LibroService {
     @Autowired
     private LibroRepository libroRepository;
@@ -23,8 +26,8 @@ public class LibroService {
         libroRepository.deleteById(id);
     }
 
-    public Libro obtenerLibroPorId(int id) {
-        return libroRepository.findById(id).orElse(null);
+    public Optional<Libro> obtenerLibroPorId(int id) {
+        return libroRepository.findById(id);
     }
     
 
